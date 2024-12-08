@@ -5,6 +5,12 @@ test('has title', async ({ page }) => {
 
   // Expect a title "to contain" a substring.
   await expect(page).toHaveTitle("Vite + React");
+
+    // Locate the h1 element
+    const h1 = await page.locator('h1');
+
+    // Assert that the h1 contains the expected text
+    await expect(h1).toHaveText('Hello All');
 });
 
 // test('get started link', async ({ page }) => {
