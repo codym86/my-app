@@ -10,7 +10,7 @@ test('has title', async ({ page }) => {
     const h1 = await page.locator('h1');
 
     // Assert that the h1 contains the expected text
-    await expect(h1).toHaveText('Hello All');
+    await expect(h1).toHaveText('Hello Everybody');
 });
 
 // test('get started link', async ({ page }) => {
