@@ -45,6 +45,7 @@ jobs:
 
       - name: Deploy to Vercel
         uses: amondnet/vercel-action@v20
+        if: success()
         # with:
         env:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
