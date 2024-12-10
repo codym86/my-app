@@ -5,6 +5,8 @@ on:
     branches:
       - main
   pull_request:
+    branches:
+      - main
 
 jobs:
   build:
@@ -33,9 +35,19 @@ jobs:
         env:
           CI: true
 
+      - name: Upload report as artifact
+        uses: actions/upload-aritfact@3
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days:
+
       - name: Deploy to Vercel
         uses: amondnet/vercel-action@v20
-        with:
+        if: success()
+        # with:
+        env:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
